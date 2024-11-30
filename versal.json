@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "name": "employee-management",
     "builds": [
        { "src": "./server.js", "use": "@vercel/node" }
     ],
@@ -8,3 +7,12 @@
        { "src": "/(.*)", "dest": "" }
     ]
  }
+ {
+   "builds": [
+     { "src": "api/server.js", "use": "@vercel/node" }
+   ],
+   "routes": [
+     { "src": "/api/(.*)", "dest": "/api/server.js" }
+   ]
+ }
+ 

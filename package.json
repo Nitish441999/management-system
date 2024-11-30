@@ -1,12 +1,12 @@
 {
-  "name": "backend",
+  "name": "employee-management-system",
   "version": "1.0.0",
   "description": "An employee management bakend API built with express.js and mongoDB",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node api/server.js"
   },
   "keywords": [
     "express",
