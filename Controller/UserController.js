@@ -9,21 +9,21 @@ const getAllEmployees = async (req, resp) => {
 
     // Check if employees list is empty
     if (!employees.length) {
-      return resp.status(404).send({
+      return resp.status(404).json({
         success: false,
         message: "Employees list not found",
       });
     }
 
     // Return the list of employees
-    resp.status(200).send({
+    resp.status(200).json({
       success: true,
       totalEmployees: employees.length,
       employees,
     });
   } catch (error) {
     console.error(error);
-    resp.status(500).send({
+    resp.status(500).json({
       success: false,
       message: "Error in Get List of Employees API",
       error: error.message || error,
@@ -37,7 +37,7 @@ const getEmployee = async (req, resp) => {
     // Validate request ID
     const { id } = req.params; // Assuming the ID is passed in the URL params
     if (!id) {
-      return resp.status(400).send({
+      return resp.status(400).json({
         success: false,
         message: "Employee ID is required",
       });
@@ -48,21 +48,21 @@ const getEmployee = async (req, resp) => {
 
     // Check if employee exists
     if (!employee) {
-      return resp.status(404).send({
+      return resp.status(404).json({
         success: false,
         message: "Employee not found",
       });
     }
 
     // Send success response
-    resp.status(200).send({
+    resp.status(200).json({
       success: true,
       message: "Employee retrieved successfully",
       employee,
     });
   } catch (error) {
     console.error(error);
-    resp.status(500).send({
+    resp.status(500).json({
       success: false,
       message: "Error in Get Employee API",
       error: error.message || error,
@@ -80,7 +80,7 @@ const updateEmployeeController = async (req, resp) => {
 
     // Validate if employee exists
     if (!employee) {
-      return resp.status(404).send({
+      return resp.status(404).json({
         success: false,
         message: "Employee Not Found",
       });
