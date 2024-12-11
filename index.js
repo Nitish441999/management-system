@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json()); // To parse incoming requests with JSON payloads
 
 app.use("/api/auth", require("./Router/AddEmployeeRouter"));
-app.use("/api/employee", require("./Router/UserRouter"));
+// app.use("/api/employee", require("./Router/UserRouter"));
 app.use("/api/department", require("./Router/DepartmentRouter"));
 app.use("/api/leave", require("./Router/LeaveRouter"));
 
