@@ -1,10 +1,24 @@
-// In your route file (where you define routes)
+const express = require("express");
+const {
+  getEmployee,
+  getAllEmployees,
+  updateEmployeeController,
+  deleteEmployeeController,
+} = require("../Controller/UserController");
+const userAuthMiddleware = require("../Middlewares/userMiddlewares");
+// const userAuthMiddleware = require("../Middlewares/userMiddlewares");
 
-const express = require('express');
-const { usersControllers } = require("../Controllers/userControlers"); // Correctly import the controller
-const router = express.Router();
+const route = express.Router();
+// get all employees route using GET method
+route.get("/getAllEmplyees", getAllEmployees);
+// get sigale employee route useing GET method
+route.get("/getSingaleEmployee/:id", userAuthMiddleware, getEmployee);
+// Update Employee Route || PUT
+route.put("/updateEmployee/:id", userAuthMiddleware, updateEmployeeController);
+//DeleteEmployee route || delete
+route.delete("/deleteEmployee/:id", userAuthMiddleware, deleteEmployeeController);
 
-// Ensure you use `usersControllers` as the callback function
-router.post("/usercreate", usersControllers);
 
-module.exports = router;
+
+
+module.exports = route;
