@@ -1,4 +1,4 @@
-const { get } = require("mongoose");
+
 const AddEmployeeModel = require("../Model/AddEmployeeModel");
 
 // Get All employees
