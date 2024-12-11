@@ -16,6 +16,7 @@ connectDb();
 app.use(cors());
 app.use(express.json()); // To parse incoming requests with JSON payloads
 
+app.use("/api/auth", require("./Router/AddEmployeeRouter"));
 
 // Example root route
 app.get("/", (req, res) => {
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 // Optional: Uncomment other routes as needed
-// app.use("/api/v1/auth", require("../Router/AddEmployeeRouter"));
+
 // app.use("/api/v1/employee", require("../Router/UserRouter"));
 // app.use("/api/v1/department", require("../Router/DepartmentRouter"));
 // app.use("/api/v1/leave", require("../Router/LeaveRouter"));

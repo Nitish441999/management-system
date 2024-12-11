@@ -67,7 +67,7 @@ const addEmployeeController = async (req, resp) => {
     });
   } catch (error) {
     console.error("Error in Add Employee API: ", error);
-    resp.status(500).send({
+    resp.status(500).json({
       success: false,
       message: "Error in Add Employee API.",
       error: error.message || error,
