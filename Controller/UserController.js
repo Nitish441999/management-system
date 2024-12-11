@@ -2,34 +2,35 @@ const { get } = require("mongoose");
 const AddEmployeeModel = require("../Model/AddEmployeeModel");
 
 // Get All employees
-const getAllEmployees = async (req, resp) => {
+const getAllEmployees = async (req, res) => {
   try {
     // Fetch all employees
     const employees = await AddEmployeeModel.find({});
 
     // Check if employees list is empty
-    if (!employees.length) {
-      return resp.status(404).json({
+    if (employees.length === 0) {
+      return res.status(404).json({
         success: false,
         message: "Employees list not found",
       });
     }
 
     // Return the list of employees
-    resp.status(200).json({
+    res.status(200).json({
       success: true,
       totalEmployees: employees.length,
       employees,
     });
   } catch (error) {
     console.error(error);
-    resp.status(500).json({
+    res.status(500).json({
       success: false,
-      message: "Error in Get List of Employees API",
+      message: "Error in fetching employees",
       error: error.message || error,
     });
   }
 };
+
 
 // Get single employee
 const getEmployee = async (req, resp) => {
@@ -80,7 +81,7 @@ const updateEmployeeController = async (req, resp) => {
 
     // Validate if employee exists
     if (!employee) {
-      return resp.status(404).json({
+      return resp.status(404).send({
         success: false,
         message: "Employee Not Found",
       });
